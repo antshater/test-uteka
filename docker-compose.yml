@@ -1,0 +1,14 @@
+version: "2"
+services:
+  php:
+    image: php:7.0-fpm
+    volumes:
+      - .:/var/www/test-uteka
+  web:
+    build: docker/nginx
+    volumes:
+      - .:/var/www/test-uteka
+    depends_on:
+      - php
+    ports:
+      - "1234:80"
